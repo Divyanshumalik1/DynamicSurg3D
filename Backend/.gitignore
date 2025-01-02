@@ -1,0 +1,42 @@
+# Byte-compiled Python files
+*.pyc
+__pycache__/
+
+# Python egg metadata
+*.egg-info/
+
+# Virtual environment folders (if applicable)
+venv/
+env/
+
+# Node.js dependencies
+node_modules/
+
+# Editor settings
+.vscode/
+
+# Build artifacts
+build/
+*.so
+
+# Output and result folders
+output/
+reconstruct/
+resultsimages/
+resultimages/
+resultsjson/
+
+# Specific directories for datasets or other data
+data/scared/
+data/endonerf/
+
+# Other directories
+Depth-Anything/
+diff_rasterization/diff_rast.egg-info
+diff_rasterization/dist
+tensorboard_3d/
+screenshots/
+
+# Specific file formats
+*.npy
+*.png
