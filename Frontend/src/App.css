@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;                /* Use Flexbox for layout */
+  justify-content: space-between; /* Optional: space out the components */
+  align-items: stretch;        /* Ensure components stretch to the same height */
+}
+
+.tissue-component,
+.graph-component {
+  flex: 0.5;                     /* Allow components to grow equally */
+  height: 100%;               /* Set a specific height (adjust as needed) */
+  margin: 20px;                /* Adjusted space between components */
+  border: 2px solid black;     /* Black border */
+  box-sizing: border-box;      /* Include padding/border in the element's total width and height */
+  background-color: white;     /* Optional: Set a background color for visibility */
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Optional: Media query for responsiveness */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;    /* Stack components vertically on small screens */
+  }
+}

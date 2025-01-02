@@ -1,0 +1,70 @@
+/* General Slider Styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px; /* Height of the track */
+  border-radius: 5px;
+  outline: none;
+  background: rgb(75, 192, 192, 0.5); /* Default track color */
+}
+
+/* Styling for Track */
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px; /* Height of the track */
+  background: rgb(75, 192, 192, 0.5); /* Track color */
+  border-radius: 5px;
+}
+
+/* Thumb Styling */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Width of the thumb */
+  height: 20px; /* Height of the thumb */
+  border-radius: 50%; /* Circular thumb */
+  cursor: pointer;
+  margin-top: -5px; /* Centers the thumb */
+  background: rgb(255, 165, 0); /* Yellow thumb */
+}
+
+/* Thumb color for Point Size */
+.point-size-slider::-webkit-slider-thumb {
+  background: rgb(255, 165, 0); /* Thumb color for Point Size */
+}
+
+/* Thumb color for FOV */
+.fov-slider::-webkit-slider-thumb {
+  background: rgb(255, 165, 0); /* Thumb color for FOV */
+}
+
+/* Thumb color for Select Frame */
+.select-frame-slider::-webkit-slider-thumb {
+  background: rgb(38, 176, 29); /* Green for Select Frame */
+}
+
+/* For Firefox */
+input[type='range']::-moz-range-thumb {
+  width: 20px; /* Width of the thumb */
+  height: 20px; /* Height of the thumb */
+  border-radius: 50%; /* Circular thumb */
+  cursor: pointer;
+  margin-top: -5px; /* Centers the thumb */
+  background: rgb(255, 165, 0); /* Yellow thumb for Firefox */
+}
+
+/* Thumb color for Point Size in Firefox */
+.point-size-slider::-moz-range-thumb {
+  background: rgb(255, 165, 0); /* Yellow thumb for Point Size */
+}
+
+/* Thumb color for FOV in Firefox */
+.fov-slider::-moz-range-thumb {
+  background: rgb(255, 165, 0); /* Yellow thumb for FOV */
+}
+
+/* Thumb color for Select Frame in Firefox */
+.select-frame-slider::-moz-range-thumb {
+  background: rgb(38, 176, 29); /* Green thumb for Select Frame */
+}
