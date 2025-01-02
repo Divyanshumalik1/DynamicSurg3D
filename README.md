@@ -38,18 +38,9 @@ Traditional 3D reconstruction methods are typically computationally intensive an
 
 ---
 
-## Key Technologies
-
-- **Machine Learning:** Incremental model training for 3D scene reconstruction.
-- **Computer Vision:** Real-time video processing and multimodal image integration.
-- **Front-End:** Interactive user interface for surgeons (React, Flask, or other frameworks).
-- **Back-End:** Python-based machine learning pipeline (PyTorch, OpenCV, etc.).
-
----
-
 ## 🚀 Installation and Setup Guide
 
-This guide will help you set up the **Real-Time 3D Scene Reconstruction for Minimally Invasive Surgeries** project on your local machine, covering both the back-end (Python) and front-end (React) components.
+This guide will help you set up the **DynamicSurg3D : Real-Time 3D Scene Reconstruction for Minimally Invasive Surgeries** project on your local machine, covering both the back-end (Python) and front-end (React) components.
 
 ### Prerequisites
 
@@ -66,8 +57,8 @@ Ensure the following software is installed on your system:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/3d-scene-reconstruction.git
-cd 3d-scene-reconstruction
+git clone https://github.com/Divyanshumalik1/DynamicSurg3D.git
+cd DynamicSurg3D
 ```
 
 ---
@@ -85,10 +76,12 @@ conda activate your_environment_name
 This will install all the necessary Python packages and dependencies for the project.
 
 #### Step 2: Install Additional Python Dependencies
-If there’s a `requirements.txt` file, install any additional dependencies:
+Install any additional dependencies:
 
 ```bash
 pip install -r requirements.txt
+pip install -e submodules/diff-gaussian-rasterization-depth
+pip install -e submodules/simple-knn
 ```
 
 #### Step 3: Verify CUDA for GPU (Optional)
@@ -103,7 +96,7 @@ print(torch.cuda.is_available())  # Should return True if CUDA is enabled
 First, move into the backend directory:
 
 ```bash
-cd backend
+cd Backend
 ```
 
 #### Step 5: Clone the Depth-Anything Repository
@@ -120,7 +113,7 @@ This will install all the required Python dependencies for Depth-Anything and it
 #### Step 6: Prepare the Pretrained Depth Models
 Download the pretrained `depth_anything_vits14.onnx` model and place it in the specified folder:
 
-- Download the ONNX model from here (or provide the exact download link).
+- Download the ONNX model from here ( https://github.com/fabio-sim/Depth-Anything-ONNX/releases ).
 - Place the downloaded model in the following directory:
 
 ```bash
@@ -149,10 +142,10 @@ The front-end is built using React. You need to install the required Node.js pac
 
 #### Step 1: Navigate to the Frontend Directory
 
-Move into the `frontend` folder (or whichever directory contains the React app):
+Move into the `Frontend` folder (or whichever directory contains the React app):
 
 ```bash
-cd frontend
+cd Frontend
 ```
 
 #### Step 2: Install Node.js Dependencies
