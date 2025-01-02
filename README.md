@@ -1,4 +1,4 @@
-# Real-Time 3D Scene Reconstruction for Minimally Invasive Surgeries
+# DynamicSurg3D : Real-Time 3D Scene Reconstruction for Minimally Invasive Surgeries
 
 ## Project Overview
 
@@ -72,10 +72,9 @@ cd 3d-scene-reconstruction
 
 ---
 
-## Backend Setup (Python)
+🖥️ Backend Setup (Python & Node.js)
 
-### Step 1: Set up a Conda Environment
-
+#### Step 1: Set Up a Conda Environment
 Create and activate a new Conda environment:
 
 ```bash
@@ -85,21 +84,61 @@ conda activate your_environment_name
 
 This will install all the necessary Python packages and dependencies for the project.
 
-### Step 2: Install Additional Python Dependencies
-
+#### Step 2: Install Additional Python Dependencies
 If there’s a `requirements.txt` file, install any additional dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 3: Verify CUDA for GPU (Optional)
-
-To ensure PyTorch is utilizing CUDA, verify that your setup detects your GPU:
+#### Step 3: Verify CUDA for GPU (Optional)
+To ensure PyTorch is utilizing CUDA for GPU acceleration, verify that your setup detects your GPU:
 
 ```python
 import torch
 print(torch.cuda.is_available())  # Should return True if CUDA is enabled
+```
+
+#### Step 4: Navigate to the Backend Directory
+First, move into the backend directory:
+
+```bash
+cd backend
+```
+
+#### Step 5: Clone the Depth-Anything Repository
+Clone the Depth-Anything repository into the backend directory:
+
+```bash
+git clone https://github.com/LiheYoung/Depth-Anything
+cd Depth-Anything
+pip install -r requirements.txt
+```
+
+This will install all the required Python dependencies for Depth-Anything and its submodules.
+
+#### Step 6: Prepare the Pretrained Depth Models
+Download the pretrained `depth_anything_vits14.onnx` model and place it in the specified folder:
+
+- Download the ONNX model from here (or provide the exact download link).
+- Place the downloaded model in the following directory:
+
+```bash
+./submodules/depth_anything/weights/depth_anything_vits14.onnx
+```
+
+#### Step 7: Install Node.js in the Backend Directory
+Your backend also requires Node.js. Install the necessary Node.js packages by navigating to the backend folder:
+
+```bash
+npm install
+```
+
+#### Step 8: Verify the Conda Environment
+Ensure the Conda environment is still active and install any additional Python dependencies:
+
+```bash
+conda activate your_environment_name
 ```
 
 ---
@@ -108,7 +147,7 @@ print(torch.cuda.is_available())  # Should return True if CUDA is enabled
 
 The front-end is built using React. You need to install the required Node.js packages.
 
-### Step 1: Navigate to the Frontend Directory
+#### Step 1: Navigate to the Frontend Directory
 
 Move into the `frontend` folder (or whichever directory contains the React app):
 
@@ -116,7 +155,7 @@ Move into the `frontend` folder (or whichever directory contains the React app):
 cd frontend
 ```
 
-### Step 2: Install Node.js Dependencies
+#### Step 2: Install Node.js Dependencies
 
 Install the required dependencies from `package.json`:
 
@@ -124,7 +163,7 @@ Install the required dependencies from `package.json`:
 npm install
 ```
 
-### Step 3: Run the Development Server
+#### Step 3: Run the Development Server
 
 To start the React development server:
 
@@ -136,21 +175,53 @@ This will start the development server, and you can access the app by navigating
 
 ---
 
-## Running the Application
+🚀 Running the Application
 
-Once both the back-end and front-end are set up:
+#### Step 1: Run the Node.js Server
+Navigate to the backend directory and run the Node.js server:
 
-1. Start the back-end by running the Python script (e.g., `main.py`):
+```bash
+node server.js
+```
 
-    ```bash
-    python main.py --input path/to/input_video.mp4 --output path/to/output_folder --batch-size 32
-    ```
+This will start the Node.js server, which handles auxiliary tasks like WebSocket communications or serving static files for the frontend.
 
-2. Run the front-end using `npm start` in the `/frontend` directory:
+The `server.js` file sets up an Express server that:
 
-    ```bash
-    npm start
-    ```
+- Serves JSON data from a specified directory.
+- Watches for file changes using `chokidar`.
+- Exposes a `/data` endpoint to fetch the data in real time, which is especially useful when the backend is processing or updating files.
+
+#### Step 2: Run the Flask Applications
+Your backend involves running multiple Flask services on different ports. Run each one in a separate terminal.
+
+##### Start the PC View Server:
+
+```bash
+FLASK_APP=view_pc_server.py flask run --host 0.0.0.0 --port 5000
+```
+
+This starts the Flask server for the 3D scene reconstruction viewer. The server handles the following:
+
+- Socket.IO communications for real-time data exchange between the backend and the frontend.
+- Point cloud data and PNG frames are served to visualize the reconstructed 3D scene in real-time.
+
+The PC view server is the core component that streams the 3D scene data to the frontend, enabling interactive visualization for the surgeons.
+
+##### Start the Video Processing Server:
+
+```bash
+FLASK_APP=video_processing.py flask run --host 0.0.0.0 --port 5001
+```
+
+This starts the Flask server that handles video processing tasks. It involves several key operations:
+
+- **Running Depth-Anything Model:** The server processes videos frame by frame, extracting 3D depth information from each frame using the pretrained Depth-Anything model.
+- **YOLOv8 Inference:** It runs YOLOv8 inference on video frames to generate grayscale masks.
+- **Incremental Training:** The server supports batch training and incremental learning, processing new data in real time.
+- **Multithreading:** It uses Flask routes and multithreading to handle multiple tasks simultaneously, such as video frame extraction, YOLO inference, and model training, ensuring efficient data processing.
+
+Both the PC View Server and Video Processing Server communicate with the frontend and provide the necessary data for real-time 3D visualization and video processing.
 
 The front-end should open in your default browser at `http://localhost:3000`, and the back-end will process your input video for 3D reconstruction.
 
