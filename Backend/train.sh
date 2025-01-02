@@ -1,1 +1,0 @@
-CUDA_LAUNCH_BLOCKING=1 PYTHONPATH='.'  python train_new.py -s /opt/nfs/home/dmalik/Downloads/Endo-4DGS-test/Old_repo_working/Endo-4DGS/data/endonerf/Patient_144_Run_2_Frames --port 6017 --expname Patient_144_Run_2_Frames_blabla --configs arguments/endonerf.py 

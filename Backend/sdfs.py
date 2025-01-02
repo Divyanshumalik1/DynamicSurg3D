@@ -1,1 +1,0 @@
-/home/dmalik/Downloads/Endo-4DGS-test/Old_repo_working/Endo-4DGS/resultsjson

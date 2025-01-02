@@ -1,1 +1,0 @@
-PYTHONPATH='.'  python train_new.py -s /opt/nfs/home/dmalik/Downloads/Endo-4DGS-test/Old_repo_working/Endo-4DGS/data/endonerf/Patient_136_Run_2 --port 6017 --expname Patient_136_Run_2_one_exp_2_checkpoint --start_checkpoint Endo-4DGS/output/Patient_136_Run_2_one_exp/point_cloud/iteration_3000 --configs arguments/endonerf.py 
