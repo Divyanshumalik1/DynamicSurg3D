@@ -1,6 +1,8 @@
 # DynamicSurg3D : Real-Time 3D Scene Reconstruction for Minimally Invasive Surgeries
 
 ## Project Overview
+![img](DynamicSurg3D.png)
+
 
 **Description:**  
 This project focuses on developing a real-time 3D scene reconstruction system tailored for minimally invasive surgeries. The goal is to provide enhanced visualization that assists surgeons during complex procedures, overcoming the limitations of current methods, which lack interactivity and real-time capabilities.
