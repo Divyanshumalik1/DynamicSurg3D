@@ -7,7 +7,8 @@
 
 Check out this demo video showcasing - Click the picture below to view project demo
 
-[![Watch the video](https://img.youtube.com/vi/AzdwC3SvuII/0.jpg)](https://youtu.be/AzdwC3SvuII)
+   <!-- [![Watch the video](https://img.youtube.com/vi/AzdwC3SvuII/0.jpg)](https://youtu.be/AzdwC3SvuII) -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AzdwC3SvuII" frameborder="0" allowfullscreen></iframe>
 
 
 **Description:**  
